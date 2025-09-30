@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Canvas Avatar Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Avatar Generator</h1>
+            <p class="subtitle">Create your perfect avatar with 49+ million combinations</p>
+        </header>
+
+        <main class="main-content">
+            <div class="avatar-section">
+                <div class="canvas-container">
+                    <canvas 
+                        id="avatarCanvas" 
+                        width="400" 
+                        height="400"
+                        role="img"
+                        aria-label="Generated avatar preview"
+                    ></canvas>
+                </div>
+                
+                <div class="canvas-controls">
+                    <button id="randomizeBtn" class="btn btn--primary" aria-label="Generate random avatar">
+                        🎲 Randomize
+                    </button>
+                    <button id="resetBtn" class="btn btn--secondary" aria-label="Reset to default avatar">
+                        🔄 Reset
+                    </button>
+                    <button id="downloadBtn" class="btn btn--primary" aria-label="Download avatar as PNG">
+                        💾 Download
+                    </button>
+                </div>
+            </div>
+
+            <div class="customization-panel">
+                <h2>Customize Your Avatar</h2>
+                
+                <div class="customization-grid">
+                    <div class="form-group">
+                        <label for="faceShape" class="form-label">Face Shape</label>
+                        <select id="faceShape" class="form-control" aria-label="Select face shape">
+                            <option value="circle">Circle</option>
+                            <option value="oval" selected>Oval</option>
+                            <option value="square">Square</option>
+                            <option value="heart">Heart</option>
+                            <option value="diamond">Diamond</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skinTone" class="form-label">Skin Tone</label>
+                        <select id="skinTone" class="form-control" aria-label="Select skin tone">
+                            <option value="#fdbcb4">Light</option>
+                            <option value="#eaa485" selected>Medium Light</option>
+                            <option value="#d08b5b">Medium</option>
+                            <option value="#ae7242">Tan</option>
+                            <option value="#8d5524">Olive</option>
+                            <option value="#754c24">Brown</option>
+                            <option value="#613d24">Dark</option>
+                            <option value="#4a2c2a">Very Dark</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hairStyle" class="form-label">Hair Style</label>
+                        <select id="hairStyle" class="form-control" aria-label="Select hair style">
+                            <option value="bald">Bald</option>
+                            <option value="short">Short</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="long">Long</option>
+                            <option value="curly">Curly</option>
+                            <option value="straight">Straight</option>
+                            <option value="wavy">Wavy</option>
+                            <option value="buzz-cut">Buzz Cut</option>
+                            <option value="mohawk">Mohawk</option>
+                            <option value="ponytail">Ponytail</option>
+                            <option value="braids">Braids</option>
+                            <option value="afro">Afro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hairColor" class="form-label">Hair Color</label>
+                        <select id="hairColor" class="form-control" aria-label="Select hair color">
+                            <option value="#2c1b18">Black</option>
+                            <option value="#8b4513" selected>Brown</option>
+                            <option value="#daa520">Blonde</option>
+                            <option value="#dc143c">Red</option>
+                            <option value="#a0522d">Auburn</option>
+                            <option value="#808080">Grey</option>
+                            <option value="#f5f5f5">White</option>
+                            <option value="#ff69b4">Colorful</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eyeShape" class="form-label">Eye Shape</label>
+                        <select id="eyeShape" class="form-control" aria-label="Select eye shape">
+                            <option value="normal" selected>Normal</option>
+                            <option value="large">Large</option>
+                            <option value="small">Small</option>
+                            <option value="narrow">Narrow</option>
+                            <option value="round">Round</option>
+                            <option value="almond">Almond</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eyeColor" class="form-label">Eye Color</label>
+                        <select id="eyeColor" class="form-control" aria-label="Select eye color">
+                            <option value="#654321" selected>Brown</option>
+                            <option value="#4169e1">Blue</option>
+                            <option value="#228b22">Green</option>
+                            <option value="#8fbc8f">Hazel</option>
+                            <option value="#708090">Grey</option>
+                            <option value="#ffbf00">Amber</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eyebrows" class="form-label">Eyebrows</label>
+                        <select id="eyebrows" class="form-control" aria-label="Select eyebrow style">
+                            <option value="thin">Thin</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="thick">Thick</option>
+                            <option value="bushy">Bushy</option>
+                            <option value="arched">Arched</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nose" class="form-label">Nose</label>
+                        <select id="nose" class="form-control" aria-label="Select nose shape">
+                            <option value="small">Small</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="large">Large</option>
+                            <option value="wide">Wide</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mouth" class="form-label">Mouth</label>
+                        <select id="mouth" class="form-control" aria-label="Select mouth shape">
+                            <option value="small">Small</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="wide">Wide</option>
+                            <option value="smile">Smile</option>
+                            <option value="frown">Frown</option>
+                            <option value="neutral">Neutral</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="facialHair" class="form-label">Facial Hair</label>
+                        <select id="facialHair" class="form-control" aria-label="Select facial hair style">
+                            <option value="none" selected>None</option>
+                            <option value="mustache">Mustache</option>
+                            <option value="beard">Beard</option>
+                            <option value="goatee">Goatee</option>
+                            <option value="stubble">Stubble</option>
+                            <option value="full-beard">Full Beard</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="accessories" class="form-label">Accessories</label>
+                        <select id="accessories" class="form-control" aria-label="Select accessories">
+                            <option value="none" selected>None</option>
+                            <option value="glasses">Glasses</option>
+                            <option value="sunglasses">Sunglasses</option>
+                            <option value="hat">Hat</option>
+                            <option value="cap">Cap</option>
+                            <option value="earrings">Earrings</option>
+                            <option value="necklace">Necklace</option>
+                            <option value="scarf">Scarf</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clothing" class="form-label">Clothing</label>
+                        <select id="clothing" class="form-control" aria-label="Select clothing style">
+                            <option value="shirt" selected>Shirt</option>
+                            <option value="t-shirt">T-Shirt</option>
+                            <option value="sweater">Sweater</option>
+                            <option value="jacket">Jacket</option>
+                            <option value="dress">Dress</option>
+                            <option value="hoodie">Hoodie</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="background" class="form-label">Background</label>
+                        <select id="background" class="form-control" aria-label="Select background color">
+                            <option value="#ffffff" selected>White</option>
+                            <option value="#e6f3ff">Light Blue</option>
+                            <option value="#e6ffe6">Light Green</option>
+                            <option value="#ffe6f3">Light Pink</option>
+                            <option value="#fff9e6">Light Yellow</option>
+                            <option value="#f0f0f0">Grey</option>
+                            <option value="#1e3a8a">Dark Blue</option>
+                            <option value="#065f46">Dark Green</option>
+                            <option value="#7c2d92">Purple</option>
+                            <option value="gradient">Gradient</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Avatar Generator - <a href="#" id="licenseLink">MIT License</a></p>
+            <p>Create unlimited avatars with no restrictions</p>
+        </footer>
+    </div>
+
+    <!-- Hidden download link -->
+    <a id="downloadLink" style="display: none;"></a>
+
+    <script src="app.js"></script>
+</body>
+</html>
