@@ -6,7 +6,7 @@ A simple client-side avatar generator built with vanilla JavaScript, HTML, and C
 
 GitHub Pages: https://anoopmmc.github.io/javascript-avatar-generator/
 
-If the link 404s right now, enable GitHub Pages as described below (one-time setup) and it will be live in a minute or two.
+The site is deployed via GitHub Pages (branch source). If you see a 404 briefly after a push, wait ~30–60 seconds for the cache to refresh.
 
 ## Files
 - `index.html` – Main HTML structure
@@ -28,42 +28,8 @@ This project is pure static HTML/CSS/JS, so the simplest deployment is the built
 4. Click Save. GitHub will provision the site (usually < 2 minutes).
 5. The site will be available at: `https://anoopmmc.github.io/javascript-avatar-generator/` (also shown on the Pages settings page).
 
-### Optional: Use a GitHub Actions workflow
-If you later add a build step (e.g., bundling, TypeScript, asset optimization), switch to the "GitHub Actions" option in the Pages settings and add a workflow like:
-
-```
-name: Deploy Pages
-on:
-	push:
-		branches: [ main ]
-
-permissions:
-	contents: read
-	pages: write
-	id-token: write
-
-jobs:
-	build:
-		runs-on: ubuntu-latest
-		steps:
-			- uses: actions/checkout@v4
-			# Add build steps here if needed (npm ci && npm run build)
-			- name: Upload artifact
-				uses: actions/upload-pages-artifact@v3
-				with:
-					path: .
-	deploy:
-		needs: build
-		runs-on: ubuntu-latest
-		environment:
-			name: github-pages
-			url: ${{ steps.deployment.outputs.page_url }}
-		steps:
-			- id: deployment
-				uses: actions/deploy-pages@v4
-```
-
-Keep it simple for now—branch deployment is enough.
+### Later: Adding a build step
+If you introduce a build process (TypeScript, bundling, minification), you can re-add a GitHub Actions workflow and switch the Pages Source from "Deploy from a branch" to "GitHub Actions". Until then, this zero‑build setup is the most reliable.
 
 ## Development Ideas
 - Random avatar shapes / colors
